@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart For you</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #121212;
+            /* Dark mode background */
+            color: #ffffff;
+            /* White text color */
+            font-family: 'Kanit', sans-serif;
+        }
+        
+        .heart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 300px;
+            perspective: 1000px;
+            /* Perspective for 3D effect */
+            transition: transform 0.3s;
+        }
+        
+        .heart {
+            position: relative;
+            transform-style: preserve-3d;
+            /* Preserve 3D transformations */
+            transition: transform 0.3s;
+            cursor: pointer;
+            transform: rotateY(0deg) rotateZ(0deg);
+            /* Initial rotation */
+        }
+        
+        .fas {
+            font-size: 200px;
+            color: #e74c3c;
+            /* Red color */
+            transition: color 0.3s;
+            animation: heartbeat 1s infinite;
+            /* Heartbeat animation */
+        }
+        
+        .heart:hover .fas {
+            color: #ff66b2;
+            /* Pink color on hover */
+        }
+        
+        .heart.clicked {
+            animation: none;
+            transform: scale(1.2) rotateY(180deg);
+            /* Clicked animation */
+        }
+        
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1) rotateZ(0deg);
+            }
+            50% {
+                transform: scale(1.1) rotateZ(10deg);
+            }
+            100% {
+                transform: scale(1) rotateZ(0deg);
+            }
+        }
+        
+        .heart-text {
+            margin-top: 20px;
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="heart-container">
+        <div class="heart" onclick="toggleHeart()"><i class="fas fa-heart"></i></div>
+    </div>
+    <div class="heart-text">Status : My heart for you</div>
+    <script>
+        function toggleHeart() {
+            const heart = document.querySelector(".heart");
+            heart.classList.toggle("clicked");
+        }
+    </script>
+</body>
+
+</html>
